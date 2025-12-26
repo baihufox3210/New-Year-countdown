@@ -68,8 +68,13 @@ body {
 }
 
 @keyframes move {
-    from { transform: translate(0, 0); }
-    to { transform: translate(100px, 100px); }
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(100px, 100px);
+    }
 }
 
 .container {
@@ -89,6 +94,7 @@ header {
     letter-spacing: -1px;
     background: linear-gradient(to right, #fff, #94a3b8);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 0.5rem;
 }
@@ -207,8 +213,20 @@ circle.progress {
 }
 
 @media (max-width: 600px) {
-    .title { font-size: 2rem; }
-    .time-display { font-size: 2.5rem; }
-    .number { font-size: 1.5rem; }
-    .progress-section { flex-direction: column; gap: 2rem; }
+    .title {
+        font-size: 2rem;
+    }
+
+    .time-display {
+        font-size: 2.5rem;
+    }
+
+    .number {
+        font-size: 1.5rem;
+    }
+
+    .progress-section {
+        flex-direction: column;
+        gap: 2rem;
+    }
 }
