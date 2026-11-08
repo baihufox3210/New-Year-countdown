@@ -1,0 +1,5 @@
+[build]
+target = "index.html"
+dist = "dist"
+# 使用相對路徑，部署到 GitHub Pages 子路徑時也能正確載入資源
+public_url = "./"

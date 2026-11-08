@@ -4,33 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 新年倒數 | New Year Countdown</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+TC:wght@300;400;700&display=swap"
-        rel="stylesheet">
+    <title>新年倒數 | New Year Countdown</title>
+    <link data-trunk rel="css" href="style.css">
+    <link data-trunk rel="rust" data-wasm-opt="z">
 </head>
 
 <body>
-    <div class="background-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
-
     <main class="container">
-        <header>
-            <h1 class="title">2026 新年倒數</h1>
-        </header>
+        <h1 id="title" class="title">新年倒數</h1>
 
-        <section class="main-card glass">
-            <div class="current-time-container">
-                <div class="label">現在時間</div>
-                <div id="current-time" class="time-display">00:00:00</div>
-                <div id="current-date" class="date-display">2025年12月26日</div>
-            </div>
+        <section class="card">
+            <div class="label">現在時間</div>
+            <div id="current-time" class="time-display">--:--:--</div>
+            <div id="current-date" class="date-display">&nbsp;</div>
 
             <div class="countdown-grid">
                 <div class="countdown-item">
@@ -52,25 +38,24 @@
             </div>
         </section>
 
-        <section class="progress-section glass">
+        <section class="card progress-section">
             <div class="progress-info">
-                <h3>2025 年度完成度</h3>
-                <p id="progress-text">0.00%</p>
+                <h2 id="progress-title">年度完成度</h2>
+                <p id="progress-text">0.000000%</p>
             </div>
 
-            <div class="progress-circle-container">
-                <svg viewBox="0 0 100 100">
+            <div class="progress-circle">
+                <svg viewBox="0 0 100 100" aria-hidden="true">
                     <circle class="bg" cx="50" cy="50" r="45"></circle>
-                    <circle id="progress-bar" class="progress" cx="50" cy="50" r="45"></circle>
+                    <circle id="progress-bar" class="progress" cx="50" cy="50" r="45"
+                        stroke-dasharray="282.7433" stroke-dashoffset="282.7433"></circle>
                 </svg>
-                <div class="percentage-label">
-                    <span id="percent-val">0</span>%
-                </div>
+                <div class="percentage-label"><span id="percent-val">0</span>%</div>
             </div>
         </section>
-    </main>
 
-    <script src="script.js"></script>
+        <noscript>此頁面需要啟用 JavaScript 以載入 WebAssembly。</noscript>
+    </main>
 </body>
 
 </html>

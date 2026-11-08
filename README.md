@@ -1,40 +1,55 @@
-# 2026 新年倒數計時器 (New Year Countdown)
+# 新年倒數計時器 (New Year Countdown)
 
-這是一個現代化、高質感的網頁應用程序，用於顯示當前時間、2026 年新年倒數以及 2025 年度的完成進度。
+以 **Rust + WebAssembly** 打造的簡約網頁，顯示目前時間、距離下一個新年的倒數，以及今年的完成進度。
 
 ## ✨ 特色功能
 
-- **即時時鐘**：精確顯示當前的本地日期、星期與時間。
-- **新年倒數**：動態計算距離 2026 年 1 月 1 日 00:00:00 的剩餘天、時、分、秒。
-- **年度進度條**：
-    - 使用動態 SVG 圓環呈現年度完成百分比。
-    - 即時更新年度進度，精確度高達小數點後 6 位。
-- **現代化設計 (Glassmorphism)**：
-    - 採用磨砂玻璃質感介面。
-    - 背景帶有絲滑的動態流光氣泡效果。
-    - 字體選用 Google Fonts 的 `Outfit` 與 `Noto Sans TC`，提升視覺層次。
-    - 完全響應式設計，完美適配手機與電腦螢幕。
+- **即時時鐘**：顯示本地日期、星期與時間。
+- **新年倒數**：自動以「明年 1 月 1 日 00:00:00」為目標，計算剩餘天、時、分、秒。
+- **年度進度**：SVG 圓環與精確到小數點後 6 位的百分比。
+- **簡約設計**：純色背景、細邊框卡片，自動跟隨系統深色 / 淺色模式，並支援手機版面。
 
 ## 🚀 技術棧
 
-- **HTML5**：語義化結構設計。
-- **Vanilla CSS3**：自定義 CSS 變量、背景模糊 (backdrop-filter) 與動畫效果。
-- **Vanilla JavaScript**：原生運算邏輯，無需依賴任何外部框架。
+- **Rust**：全部邏輯以 Rust 撰寫，透過 `wasm-bindgen` / `web-sys` 操作 DOM。
+- **Trunk**：建置與開發伺服器。
+- **HTML + CSS**：無任何外部框架或字型依賴。
 
 ## 📂 檔案結構
 
-- `index.html`：網頁的主體結構。
-- `style.css`：定義視覺樣式與動畫效果。
-- `script.js`：處理時間運算與 UI 更新邏輯。
+- `src/main.rs`：WebAssembly 進入點，負責 DOM 更新與每秒計時。
+- `src/countdown.rs`：純計算邏輯（倒數、年度進度、格式化），含單元測試。
+- `index.html`：頁面結構（Trunk 範本）。
+- `style.css`：簡約樣式。
+- `Trunk.toml`：Trunk 建置設定。
 
-## 🛠️ 如何使用
+## 🛠️ 開發與建置
 
-1. 下載或克隆本專案所有檔案。
-2. 直接使用瀏覽器打開 `index.html` 即可運行。
+```bash
+rustup target add wasm32-unknown-unknown
+cargo install trunk --locked
+```
 
-## 📸 預覽
+本機開發（預設 http://127.0.0.1:8080）：
 
-畫面中心顯示當前時間與倒數計時，底部則展示精緻的圓環進度條。
+```bash
+trunk serve
+```
+
+執行測試：
+
+```bash
+cargo test
+```
+
+正式建置（輸出至 `dist/`）：
+
+```bash
+trunk build --release
+```
+
+推送至 `main` 後，GitHub Actions 會自動建置並部署到 GitHub Pages
+（需在 repo 的 Settings → Pages 將 Source 設為 **GitHub Actions**）。
 
 ---
 *祝您新的一年，萬事如意！*
